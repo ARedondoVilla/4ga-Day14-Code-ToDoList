@@ -28,13 +28,27 @@ export default function(props) {
 
      return (
         <main className="page">
-            <h1>To Do List</h1>
+            <div className="container">
+                <h1>To Do List</h1>
 
-            <input type="text" onChange={newTask} onKeyPress={pressEnter} value={task}/>
+                <input type="text" onChange={newTask} onKeyPress={pressEnter} value={task}/>
 
-            <ul>
-                {list.map((value, index) => {return <li key={index}>{value}</li>})}
-            </ul>
+                <ul>
+                    {list.map((value, index) => {return <li key={index}>{value}</li>})}
+                </ul>
+
+                <div className="card">
+                    <div className="card-header">
+                        <h1>To Do List</h1>
+                    </div>
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item">Cras justo odio</li>
+                        <li className="list-group-item">Dapibus ac facilisis in</li>
+                        <li className="list-group-item">Vestibulum at eros</li>
+                        {list.map((value, index) => {return <li className="list-group-item" key={index}>{value}</li>})}
+                    </ul>
+                </div>
+            </div>
 
         </main>
     )
