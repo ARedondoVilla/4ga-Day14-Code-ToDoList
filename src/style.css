@@ -3,3 +3,11 @@
 .card {
     width: 100%;
 }
+
+.container {
+    width: 800px;
+}
+
+#title-card {
+    background-color: #FDFCD3;
+}

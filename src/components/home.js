@@ -6,7 +6,7 @@ export default function(props) {
 
     useEffect(() => {
        // console.log(list);
-       console.log(task);
+       // console.log(task);
         
     });
 
@@ -29,23 +29,19 @@ export default function(props) {
      return (
         <main className="page">
             <div className="container">
-                <h1>To Do List</h1>
-
-                <input type="text" onChange={newTask} onKeyPress={pressEnter} value={task}/>
-
-                <ul>
-                    {list.map((value, index) => {return <li key={index}>{value}</li>})}
-                </ul>
-
-                <div className="card">
-                    <div className="card-header">
+                <div className="card mt-4">
+                    <div className="card-header text-center" id="title-card">
                         <h1>To Do List</h1>
                     </div>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Cras justo odio</li>
-                        <li className="list-group-item">Dapibus ac facilisis in</li>
-                        <li className="list-group-item">Vestibulum at eros</li>
-                        {list.map((value, index) => {return <li className="list-group-item" key={index}>{value}</li>})}
+                        <li className="list-group-item">
+                            <textarea className="form-control" type="text" aria-label="With textarea" onChange={newTask} onKeyPress={pressEnter} value={task}>
+                            </textarea>
+                        </li>
+                        {list.map((value, index) => {return <li className="list-group-item" key={index}>
+                            {value} 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                            </li>})}
                     </ul>
                 </div>
             </div>
