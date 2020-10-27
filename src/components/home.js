@@ -38,10 +38,15 @@ export default function(props) {
                             <textarea className="form-control" type="text" aria-label="With textarea" onChange={newTask} onKeyPress={pressEnter} value={task}>
                             </textarea>
                         </li>
-                        {list.map((value, index) => {return <li className="list-group-item" key={index}>
-                            {value} 
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                            </li>})}
+                        {list.map((value, index) => {
+                            return (
+                            <li className="list-group-item" key={index}>
+                                {value} 
+                                <button type="button" class="close" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </li>
+                        )})}
                     </ul>
                 </div>
             </div>
