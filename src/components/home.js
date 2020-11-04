@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 
 export default function(props) {
-    const [task, setTask] = useState("")
+    const [task, setTask] = useState(''); 
     const [list, setList] = useState([]);
+    const [key, setKey] = useState(0);
 
     useEffect(() => {
-       // console.log(list);
+       console.log(list);
        // console.log(task);
+       
         
     });
 
     function newTask(event) {
-        setTask(event.target.value);  
+        // setTask({"id": list.length, "todo": event.target.value});
+        setTask(event.target.value);
+        
     }
 
     function pressEnter(event) {
@@ -21,11 +25,22 @@ export default function(props) {
         }
 
         if (event.key === "Enter") {
-            setList(list.concat(task));
-            setTask("");
+            // setList(list.concat(task));
+            // setList([...list, task]);
+            setList([...list, {"id": key, "todo": task}]);
+            setTask('');
+            setKey(key + 1);
         }
     }
 
+    function deleteTask(id) { // SE EJECUTA IGUAL SIN PARAR EL PARAMETRO event
+        let newList = list.filter((item, index) => {
+            return (item.id !== id) // DEVUELVE TODOS LOS ELEMENTOS QUE CUMPLAN ESTE REQUISITO (LO FILTRA)
+        })
+        
+        setList(newList); // DEFINO NUEVO ESTADO DE LA LISTA TODOS
+    }
+   
      return (
         <main className="page">
             <div className="container">
@@ -35,14 +50,15 @@ export default function(props) {
                     </div>
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">
-                            <textarea className="form-control" type="text" aria-label="With textarea" onChange={newTask} onKeyPress={pressEnter} value={task}>
-                            </textarea>
+                            <input className="form-control form-control-lg" type="text" placeholder="New Task" 
+                                onChange={newTask} onKeyPress={pressEnter} value={task}>
+                            </input>
                         </li>
-                        {list.map((value, index) => {
+                        {list.map((item, index) => {  
                             return (
-                            <li className="list-group-item" key={index}>
-                                {value} 
-                                <button type="button" class="close" aria-label="Close">
+                            <li className="list-group-item" key={item.id}>
+                                {item.todo} 
+                                <button onClick={(event) => deleteTask(item.id)} type="button" className="close" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </li>
