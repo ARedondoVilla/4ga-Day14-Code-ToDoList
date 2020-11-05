@@ -8,14 +8,11 @@ export default function(props) {
     useEffect(() => {
        console.log(list);
        // console.log(task);
-       
-        
     });
 
     function newTask(event) {
         // setTask({"id": list.length, "todo": event.target.value});
         setTask(event.target.value);
-        
     }
 
     function pressEnter(event) {
@@ -33,7 +30,7 @@ export default function(props) {
         }
     }
 
-    function deleteTask(id) { // SE EJECUTA IGUAL SIN PARAR EL PARAMETRO event
+    function deleteTask(id) {
         let newList = list.filter((item, index) => {
             return (item.id !== id) // DEVUELVE TODOS LOS ELEMENTOS QUE CUMPLAN ESTE REQUISITO (LO FILTRA)
         })
