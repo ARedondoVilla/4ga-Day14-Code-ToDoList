@@ -1,5 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+body {
+    background-color: #455D89;
+}
+
 .card {
     width: 100%;
 }
@@ -10,4 +14,5 @@
 
 #title-card {
     background-color: #FDFCD3;
+    color: #455D89;
 }
